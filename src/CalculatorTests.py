@@ -38,8 +38,11 @@ class MyTestCase(unittest.TestCase):
         multiply_test_data.clear()
 
     def test_divide_method_calculator(self):
-        self.assertEqual(self.calculator.divide(2, 2), 1)
-        self.assertEqual(self.calculator.result, 1)
+        divide_test_data = CsvReader('/src/Unit Test Division.csv').data
+        for row in divide_test_data:
+            self.assertEqual(self.calculator.divide(row['Value 1'], row['Value 2']), (float(row['Result'])))
+            self.assertEqual(round(self.calculator.result, 9), float(row['Result']))
+        divide_test_data.clear()
 
     def test_square_method_calculator(self):
         self.assertEqual(self.calculator.square(2), 4)

@@ -8,7 +8,7 @@ def multiplication(a, b):
     return int(a) * int(b)
 
 def division(a,b):
-    return float(a) / float(b)
+    return round((float(b) / float(a)),9)
 
 def squaring(a):
     return int(a)**2
