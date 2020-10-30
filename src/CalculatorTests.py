@@ -31,8 +31,11 @@ class MyTestCase(unittest.TestCase):
         subtract_test_data.clear()
 
     def test_multiply_method_calculator(self):
-        self.assertEqual(self.calculator.multiply(2, 2), 4)
-        self.assertEqual(self.calculator.result, 4)
+        multiply_test_data = CsvReader('/src/Unit Test Multiplication.csv').data
+        for row in multiply_test_data:
+            self.assertEqual(self.calculator.multiply(row['Value 1'], row['Value 2']), int(row['Result']))
+            self.assertEqual(self.calculator.result, int(row['Result']))
+        multiply_test_data.clear()
 
     def test_divide_method_calculator(self):
         self.assertEqual(self.calculator.divide(2, 2), 1)
