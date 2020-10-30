@@ -52,8 +52,12 @@ class MyTestCase(unittest.TestCase):
         square_test_data.clear()
 
     def test_square_root_method_calculator(self):
-        self.assertEqual(self.calculator.squareroot(4), 2)
-        self.assertEqual(self.calculator.result, 2)
+        square_root_test_data = CsvReader('/src/Unit Test Square Root.csv').data
+        for row in square_root_test_data:
+            self.assertEqual(self.calculator.squareroot(row['Value 1']), round(float(row['Result']), 10))
+            self.assertEqual(round(self.calculator.result, 9), round(float(row['Result']), 9))
+        square_root_test_data.clear()
+
 
 if __name__ == '__main__':
     unittest.main()
