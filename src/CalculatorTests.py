@@ -58,6 +58,8 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(round(self.calculator.result, 9), round(float(row['Result']), 9))
         square_root_test_data.clear()
 
+    def test_results(self):
+        self.assertEqual(self.calculator.result, 0)
 
 if __name__ == '__main__':
     unittest.main()
